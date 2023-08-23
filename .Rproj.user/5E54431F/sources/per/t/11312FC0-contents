@@ -1,0 +1,20 @@
+---
+title: "About"
+image: ./img/analysis.png
+about: 
+  template: jolla
+  links :
+    - icon: github
+      text: github
+      href: https://github.com/GCAM-KAIST
+---
+
+## IAM Powerhouse @ KAIST
+
+업무 version control을 위한 Quarto 페이지 입니다.
+
+About this site
+
+```{r}
+1 + 1
+```

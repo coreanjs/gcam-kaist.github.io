@@ -1,0 +1,114 @@
+---
+title: "KIER기술정책플랫폼"
+date : last-modified
+author: 
+ - name: "안지석"
+   affiliation: "한국에너지기술연구원 정책연구실"
+title-block-banner: true
+format: 
+  html:
+    theme: flatly
+    code-fold: true
+    toc: true
+    number-section : true
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE, fig.width = 10, fig.height = 5)
+
+```
+
+## WELCOME!!
+
+> 환영합니다.
+
+::: {callout-note}
+callout-note 테스트입니다. 작동 되나요??
+:::
+
+::: {.callout-caution collapse="TRUE"}
+## 시작하기 전에 앞서
+
+callout-note 테스트입니다. 작동 되나요??
+:::
+
+## 지역별 산업별 전력소비량 분석
+
+-   데이터 출처: KESIS, KEPCO
+
+```{r warning = FALSE, message = FALSE}
+library(tidyverse)
+library(readxl)
+
+
+KESIS_elec_consumption_raw<- read_excel("KESIS_지역별_산업분류별_전력소비량_extracted.xlsx") %>% 
+  pivot_longer( -c('region', 'type'), names_to="year", values_to="GWh") %>% 
+  mutate(GWh =round(GWh,1))
+
+KESIS_elec_consumption_raw
+
+
+unique(KESIS_elec_consumption_raw$type)
+```
+
+
+
+
+
+
+```{r}
+
+max(KESIS_elec_consumption_raw$year) -> max_year
+
+
+KESIS_elec_consumption_2021<- KESIS_elec_consumption_raw %>% 
+  filter(year == 2021)
+
+##지표표기 옵션
+options("scipen" = 100)
+
+
+## 폰트
+library(showtext)
+library(extrafont)
+
+showtext_auto()
+
+font_add_google("Nanum Gothic", "nanumgothic")
+font_add_google("Poor Story", "poorstory")
+
+
+```
+
+```{r}
+KESIS_elec_consumption_2021 %>% 
+  group_by(type) %>% 
+  summarise(GWh = sum(GWh)) %>% 
+  arrange(desc(GWh)) %>% 
+  pull(type) ->type_level
+
+type_level
+
+```
+
+ 
+
+`r max_year`년 지역별 산업별 전력소비량을 알아보자.
+
+# 여기서부터는 R에서 이미지 따로 저장하여 추출한 것
+
+Quarto에서 r code chunk를 활용해 이미지를 추출하면 해상도 문제가 발생한다. 비슷한 문제를 갖는 사람들이 많은 거 같은데, 해결법은 잘 모르겠다. 그렇기 떄문에 이미지는 R에서 추출하여서 Quarto figure로 가져오는 것이 바람직한 방법일 것이다.
+  
+  
+![](./img/regional_1999_2021.png){fig-align="center"}
+
+    
+공백 추가하하는 건 스페이스 두 개
+
+![](./img/type_img.png){fig-align="center"}
+
+![](./img/region_img.png){fig-align="center"}
+
+지역별 산업분류별로 구분해보면 차이를 확인할 수 있다. 서울의 경우에는 제조업의 전력소비량이 거의 없고 서비스업이 큰 비중을 차지하고 있다.
+
+![](./img/region_facet_img.png){fig-align="center"}

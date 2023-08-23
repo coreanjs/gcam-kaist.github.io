@@ -1,0 +1,185 @@
+---
+title: "코퍼스언어학학교"
+date : last-modified
+author: 
+ - name: "안지석"
+   affiliation: "한국에너지기술연구원 정책연구실"
+title-block-banner: true
+format: 
+  html:
+    theme: flatly
+    code-fold: false
+    toc: true
+    number-sections : true
+execute: 
+   echo: true
+   message: false
+   warning: false
+   eval: true
+---
+
+# R 강의
+
+## 정규성 검정
+
+-   평균이 평균으로서 자격이 있는지
+
+::: callout-note
+callout-note 테스트입니다. 작동 되나요??
+:::
+
+::: {.callout-caution collapse="TRUE"}
+## 시작하기 전에 앞서
+
+callout-note 테스트입니다. 작동 되나요??
+:::
+
+-   데이터가 30개 이상 되면 정규성 검정 안해도 됨
+
+```{r}
+
+library(tidyverse)
+library(readxl)
+
+data1<-read_excel("data1.xlsx")
+
+
+shapiro.test(data1$English)
+
+```
+
+## 교차분석
+
+-   수치(점수) : 비율변수
+-   Status : 명명변수 (질적변수 Pass or Fail)
+
+```{r}
+
+data2<-read.delim("2.Data_Chisquare.txt", header=T)
+
+head(data2)
+
+table(data2$Department, data2$Status)
+
+
+prop.table(table(data2$Department, data2$Status))
+
+
+prop.table(table(data2$Department, data2$Status))*100
+
+chisq.test(data2$Department, data2$Status, correct= F)
+```
+
+## t검정
+
+-   ㅋ두 집단의 평균이 통계적으로 유의미한 차이가 있는지 살펴볼 떄
+
+::: callout-note
+## t검정은 언제?
+
+두 집단의 평균이 통계적으로 유의미한 차이가 있는지 살펴볼 떄
+:::
+
+```{r}
+data3<-read.delim("3.Data_Independent.txt", header=T)
+
+head(data3)
+
+tail(data3)
+
+unique(data3$ID)
+
+## 아아아
+tapply(data3$TOEIC, data3$Department, shapiro.test)
+
+##등분산 검정
+bartlett.test(data= data3, TOEIC~Department)
+
+## ttest
+t.test(data= data3, TOEIC~Department, var.equal =TRUE)
+```
+
+-   데이터가 정규분포를 이룰 때는 t.test, 정규분포를 이루지 않을 떄는 Wilcocox Rank-Sum Test
+
+```{r}
+wilcox.test(data= data3, TOEIC~Department)
+
+```
+
+```{r}
+library(psych)
+```
+
+## Paired t-test
+
+```{r}
+
+data4<-read.delim('4.Data_Paired.txt', header=T)
+
+head(data4)
+
+tapply(data4$TOEIC, data4$Test, shapiro.test)
+
+##t-test paired = T
+t.test(data= data4, TOEIC~Test, paired=T, var.equal=T)
+
+
+##t-test paired =F
+t.test(data= data4, TOEIC~Test, paired=F, var.equal=T)
+```
+
+## ANOVA (분산분석)
+
+::: callout-important
+ANOVA는 2개 이상의 집단을 비교할 때 쓰인다.
+:::
+
+```{r}
+
+data5<-read.delim("5.Data_ANOVA.txt", header =T)
+
+head(data5)
+
+hist(data5$TOEIC)
+
+## p>0.05이기 떄문에 정규분포를 이룬다고 가정할 수 있다
+tapply(data5$TOEIC, data5$Department, shapiro.test)
+
+bartlett.test(data=data5, TOEIC~Department)
+
+oneway.test(data=data5, TOEIC~Department, var.equal=T)
+oneway.test(data=data5, TOEIC~Department, var.equal=F)
+
+## 본페로니? bonf 추천
+pairwise.t.test(data5$TOEIC, data5$Department, p.adjust.method='bonf')
+
+library(psych)
+
+tapply(data5$TOEIC, data5$Department, describe) 
+
+
+```
+
+# python 강의
+
+## 설치
+
+-   python만 설치하는 것보단, anaconda를 설치하자. anaconda에는 python과 그 외 유용한 툴이 포함되어 있다.
+-   spyder 열기 -\> 여는데 시간이오래 걸림
+-   python은 쓰기 편한데 느린게 단점.
+
+S 1. anaconda prompt 열고 `jupyter notebook WORKING_DIRECTORY` 입력 2. 우측 상단 New -\>python3 클릭
+
+-   python은 함수 만들 때 괄호 { curly bracket 쓰지 않음
+
+-   indentation 들여쓰기 잘해야 함. 안그러면 오류
+
+-   변수, 함수 이름으로 사용 불가 `ex. false, none, and, as, def`
+
+-   변수명은 숫자로 시작할 수 없다.
+
+-   자료형은 `type`, 주소는 `id`로 확인
+
+-   `a = input()` 이 형식으로 들어가는 건 string 처리됌
+
+\`\`\`{r}

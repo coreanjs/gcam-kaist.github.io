@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "업무 version control을 위한 Quarto 페이지 입니다.\nAbout this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "blog",
+    "section": "",
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nDec 19, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 16, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "documentation.html",
+    "href": "documentation.html",
+    "title": "Documentation",
+    "section": "",
+    "text": "Github: Sign up for github account and email me to give you access to GCAM-KAIST\nGit client: download a git client of your choice.\n\nTortoiseGit : old school client\nGithub desktop : standard github client\ngit for windows : command line based professional git client\n\nXML marker 1.1: make sure you get the older 1.1 version\nR\n\n\n\n\n\nGCAM tutorial\nGit\nGCAM\ngcamdata\nUseful guide/PPT slides from gcam-training\nvideos\n\n\n\n\n\n\nGCAM\nDownload standard GCAM release\nSet up some prerequisite apps and run!\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nif anything on github is confusing, just ask chatGPT!\n\n\n\nGo to GCAM-KAIST.\nPick a branch to start from (currently: hcm/proj/kaist7update).\nCreate your own branch [you own this. No one else will make changes to your own branch].\ngit clone [this creates a full repo of GCAM-KAIST].\ngit checkout [your branch name] [this sets your branch on your own computer].\nTry making a small inconsequential change. Such as adding a small xml file in the input/policy folder.\ngit add [file you added].\ngit commit [this will commit all files you added/changed].\ngit push.\nConfirm that your commit has been correctly pushed to github.\n(if you are happy with your development, and would like it to be applied to ALL GCAM-KAIST users) create a pull request (PR) [back into the main GCAM-KAIST repo].\nAssign me (d3y419) as the reviewer. I’ll review the PR and merge as needed.\n\n\n\n\nAs we embark on an exciting and crucial phase of updating our energy assessment model from GCAM-KAIST 2.0 to GCAM-KAIST 7.0, the following instructions and guidelines will ensure a smooth transition. Each one of the team is responsible for a particular XML file which is identified in the following link.\n\nDownload the Required Versions\n\nGCAM 7.0 Official Release by JCRI: You can download this latest version from the following link.\nGCAM-KAIST 2.0: This is our specialized version at KAIST. Please download it using the link .\n\nAnalyze the Differences\n\nXML File Comparison: Please compare the XML files between the two versions as per your specific task in the google sheet. Document the Differences: Note any discrepancies, changes, or new features. This will help us understand what needs to be transferred or adapted.\n\nUpdate GCAM 7.0 with GCAM-KAIST 2.0 Data\n\nModify the Original GCAM 7.0 XML Files: Replace the necessary data with the corresponding data from GCAM-KAIST 2.0. Follow the Evolution Process: This is vital to complete the transformation from GCAM-KAIST 2.0 to GCAM-KAIST 7.0 by checking the “comparison with GCAM-KAIST2” column in google sheet. After running the scenario, you can check if the results are different from GCAM-KAIST2.0 or not.\n\nPrepare for Tomorrow’s Meeting\n\nClarification of Differences: Be prepared to discuss the differences you’ve identified and how you’ve addressed them."
+  },
+  {
+    "objectID": "gcam_transportation.html",
+    "href": "gcam_transportation.html",
+    "title": "GCAM-KAIST7",
+    "section": "",
+    "text": "Natural Gas Vehicles(NGV)\nLight-duty vehicles\n\n지역별로 LDV의 사이즈를 4개씩 구분하였고, 각각의 배터리 용량(kwh poer vehicle) 제시\nBEV battery pack costs는 2020 BNEF EV Outlook에서 가져옴\ncost mark-up??\nFuel cell stack costs는 NREL, 2020 Transportation Annual Technology Baseline에서 가져옴"
+  },
+  {
+    "objectID": "gcam_transportation.html#transportation_ucd_core_curpol_korea_dawoon",
+    "href": "gcam_transportation.html#transportation_ucd_core_curpol_korea_dawoon",
+    "title": "GCAM-KAIST7",
+    "section": "transportation_UCD_CORE_CurPol_Korea_Dawoon",
+    "text": "transportation_UCD_CORE_CurPol_Korea_Dawoon\n\nregion : South Korea\n\nsupplysector :\n\n항공 :\n\naviation_intl\n\n화물 :\n\nfreight\nfreight_road\n\n여객 :\n\npass_road\npass_road_LDV\npass_road_LDV_4W\n\n해운 :\n\nshipping_intl\n\n\nenergy_final_demand\n\n항공:\n\naviation_intl\n\n화물:\n\nfreight\n\n여객:\n\npass\n\n해운:\n\nshipping_intl\n\n\n\n\n\n\ngcam-7의 transportation_UCD_CORE.xml과 비교해보니, supplysector, energy-final-demand의 구성 name은 동일함\nThe most common failure to run GCAM when double clicking the run-gcam executable script typically relate to Java.\nmodel running 테스트 -> All model periods solved correctly.\n\n\n\n\n스크린샷\n\n\n\nModel run 결과는 exe - log - main_log.txt 에서 확인 가능\noutput - queries\nModelInterface - run-model-interface.bat\n\n ### transportation\n\n\n\nCode\ndata<- data.frame(\n  stringsAsFactors = FALSE,\n       check.names = FALSE,\n            sector = c(\"trn_aviation_intl\",\n                       \"trn_aviation_intl\",\"trn_aviation_intl\",\"trn_freight\",\n                       \"trn_freight\",\"trn_freight\",\"trn_freight\",\"trn_freight\",\n                       \"trn_freight\",\"trn_freight\",\"trn_freight\",\"trn_freight\",\n                       \"trn_freight\",\"trn_freight\",\"trn_freight_road\",\n                       \"trn_freight_road\",\"trn_freight_road\",\"trn_freight_road\",\n                       \"trn_pass\",\"trn_pass\",\"trn_pass\",\"trn_pass\",\"trn_pass\",\n                       \"trn_pass\",\"trn_pass\",\"trn_pass\",\"trn_pass\",\n                       \"trn_pass_road\",\"trn_pass_road\",\"trn_pass_road\",\"trn_pass_road\",\n                       \"trn_pass_road\",\"trn_pass_road\",\"trn_pass_road_LDV\",\n                       \"trn_pass_road_LDV\",\"trn_pass_road_LDV\",\n                       \"trn_pass_road_LDV_4W\",\"trn_pass_road_LDV_4W\",\"trn_pass_road_LDV_4W\",\n                       \"trn_pass_road_LDV_4W\",\"trn_pass_road_LDV_4W\",\n                       \"trn_pass_road_LDV_4W\",\"trn_pass_road_LDV_4W\",\"trn_pass_road_LDV_4W\",\n                       \"trn_pass_road_LDV_4W\",\"trn_pass_road_LDV_4W\",\n                       \"trn_shipping_intl\",\"trn_shipping_intl\",\"trn_shipping_intl\",\n                       \"trn_shipping_intl\"),\n         subsector = c(\"International Aviation\",\n                       \"International Aviation\",\"International Aviation\",\n                       \"Domestic Ship\",\"Domestic Ship\",\"Domestic Ship\",\"Domestic Ship\",\n                       \"Freight Rail\",\"Freight Rail\",\"Freight Rail\",\n                       \"Freight Rail\",\"Freight Rail\",\"Freight Rail\",\"road\",\n                       \"Medium truck\",\"Medium truck\",\"Medium truck\",\"Medium truck\",\n                       \"Cycle\",\"Domestic Aviation\",\"Domestic Aviation\",\n                       \"Domestic Aviation\",\"HSR\",\"Passenger Rail\",\"Passenger Rail\",\n                       \"Walk\",\"road\",\"Bus\",\"Bus\",\"Bus\",\"Bus\",\"Bus\",\"LDV\",\n                       \"2W and 3W\",\"2W and 3W\",\"4W\",\"Car\",\"Car\",\"Car\",\n                       \"Car\",\"Car\",\"Large Car and Truck\",\"Large Car and Truck\",\n                       \"Large Car and Truck\",\"Large Car and Truck\",\n                       \"Large Car and Truck\",\"International Ship\",\"International Ship\",\n                       \"International Ship\",\"International Ship\"),\n        technology = c(\"BEV\",\"Hydrogen\",\"Liquids\",\n                       \"BEV\",\"FCEV\",\"Hybrid Liquids\",\"Liquids\",\"BEV\",\"Coal\",\n                       \"Electric\",\"FCEV\",\"Hybrid Liquids\",\"Liquids\",\"road\",\n                       \"BEV\",\"FCEV\",\"Hybrid Liquids\",\"Liquids\",\"Cycle\",\n                       \"BEV\",\"Hydrogen\",\"Liquids\",\"Electric\",\"Electric\",\n                       \"Liquids\",\"Walk\",\"road\",\"BEV\",\"FCEV\",\"Hybrid Liquids\",\n                       \"Liquids\",\"NG\",\"LDV\",\"BEV\",\"Liquids\",\"4W\",\"BEV\",\n                       \"FCEV\",\"Hybrid Liquids\",\"Liquids\",\"NG\",\"BEV\",\"FCEV\",\n                       \"Hybrid Liquids\",\"Liquids\",\"NG\",\"BEV\",\"FCEV\",\n                       \"Hybrid Liquids\",\"Liquids\"),\n            `1990` = c(0,0,4066.31,0,0,0,201560,\n                       0,0,4090.03,0,0,1698.38,59491.6,0,0,0,59491.6,\n                       3982.94,0,0,27005.4,1172.44,12416.7,9470.48,\n                       11942.8,251441,0,0,0,146230,0,105211,0,5379.92,\n                       99831.2,0,0,0,61888.1,0,0,0,0,37943.1,0,0,0,0,\n                       621749),\n            `2005` = c(0,0,6792.51,0,0,0,107706,\n                       0,0,10454,0,0,4125.57,144512,0,0,0,144512,\n                       4519.94,0,0,45111,2996.72,31736.2,23004.5,13551.8,\n                       631739,0,0,0,355199,20900.1,255640,0,13068.1,\n                       242572,0,0,0,150329,48.1588,0,0,0,92165.4,29.5254,0,\n                       0,0,3919680),\n            `2010` = c(0,0,8218.54,0,0,0,82876.8,\n                       0,0,8845.18,0,0,4318.83,152971,0,0,0,152971,\n                       4597.94,0,0,54583,2535.55,26851.7,24081.8,13786.8,\n                       715305,0,0,0,371554,66023.1,277727,0,14188.6,\n                       263539,0,0,0,163217,157.712,0,0,0,100067,96.6672,\n                       0,0,0,3392390),\n            `2015` = c(0,0,10910.1,0,0,0,27104.4,\n                       0,0,8968.6,0,0,4844.4,173531,0,0,0,173531,\n                       4716.94,0,0,72459.7,2570.85,27225.4,27012.2,14141.8,\n                       815191,0,0,0,416450,75161,323580,0,16531.1,\n                       307049,0,0,0,190162,186.261,0,0,0,116586,114.183,0,\n                       0,0,3207670),\n            `2020` = c(0,0,12383.4,0,0,420.15,\n                       7104.98,0,0,2528.31,0,0,1348.54,389781,0,0,1.5788,\n                       389779,4209.59,0,0,80269,2269.58,30240,31093,\n                       12620.7,888361,0,0,46107.8,330559,47782.1,463912,0,\n                       17177,446735,0,0,2753.87,243124.3,186.3143,0,0,\n                       2464.8,198046.4,158.4655,0,0,105293,3262900),\n            `2025` = c(0,0,14941.4,0,0,1518.95,\n                       6656.62,15.5779,0,2582.1,36.9488,65.5792,1355.04,\n                       414561,0.0236435,0.0670099,8.17456,414554.3,3846.17,0,\n                       0,102857,2535.69,29600.6,30364.6,11531.2,897215,\n                       4690.82,6216.49,175040,218372,35287.7,457609,\n                       13054.3,9489.28,435065,2893.29,120.143,9331.98,219649.3,\n                       151.285,2178.82,68.5821,8264.18,192263,144.5069,0,\n                       0,390931,3142900),\n            `2030` = c(0,0,17099.1,0,0,4137.84,\n                       5270.71,132.848,0,2239.35,157.824,262.245,1132.48,\n                       433894,0.3015818,0.6750903,19.896132,433878.3,3529.7,\n                       0,0,120751,2771.2,28773.9,29426.1,10582.4,901410,\n                       21134,25542.2,180633,185333,30292.5,458476,18521.9,\n                       6768.3,433185,16082.12,2009.5288,18141.93,188062.1,\n                       109.6817,13043.72,1338.5943,15856.34,178417.9,\n                       123.7027,0,0,1184990,2534180),\n            `2035` = c(0.00430412,0.00720779,18503,\n                       20.8042,6.5157,7135.87,3849.43,282.481,0,1483.35,\n                       343.038,545.929,746.051,455404,2.0724368,3.7146859,\n                       33.874018,455374.6,3248.89,301.15,145.767,129338,\n                       2924.99,27689,28287.9,9740.48,904832,58747,64497,\n                       141366,143099,23532.2,473591,19006.9,7068.05,447516,\n                       27941.73,3767.7235,26151.559,167784.3,81.39656,\n                       23434.67,2584.3183,23230.255,172429.7,110.7512,160.761,\n                       930.384,2293400,1708560),\n            `2040` = c(0.0359311,0.13751,19578.1,\n                       59.3107,20.2455,8451.67,3389.48,366.227,0,1122.05,\n                       454.706,695.633,562.887,473263,6.67709374,9.8142096,\n                       45.7412,473217.1,2993.71,775.937,456.011,134110,\n                       3011.2,26453.4,27011.8,8975.41,898796,88643.7,88402.3,\n                       112624,112507,18592.6,478027,19154.8,7217.74,451654,\n                       35846.95,5605.6209,31506.527,148641.9,58.55494,\n                       30909.531,3998.4261,28599.103,166387.6,99.87305,483.097,\n                       3443.96,2710160,1466540),\n            `2045` = c(0.278111,1.93601,20446.1,\n                       166.327,64.9088,9109.2,3363.75,405.467,0,1062.7,\n                       517.074,760.882,534.745,488244,13.1475027,16.146676,\n                       51.83323,488184.5,2751.31,1873.23,1326.68,135888,\n                       3040.38,25072.3,25609.7,8248.68,885107,101588,92091.3,\n                       100045,98640.1,16364.7,476379,18966.7,7271.34,450141,\n                       38649.507,7223.2147,33431.73,139804.3,53.1615,\n                       34300.933,5404.2053,31161.37,160018.89,93.18273,1442.57,\n                       13150.1,2909650,1413470),\n            `2050` = c(1.96195,20.2405,21082.9,\n                       377.083,168.948,9493.58,3451.14,432.337,0,1075.12,\n                       566.538,806.741,546.421,500500,23.343953,23.475638,\n                       57.05254,500423.1,2523.36,4124.63,3441.58,133460,3015.6,\n                       23606.1,24144.4,7565.28,863956,108493,89404.4,\n                       91964.1,89549.3,14866.9,469679,18520.6,7257,443901,\n                       37245.57,8611.616,32724.34,134551.43,49.44327,34149.95,\n                       6792.507,31458.37,158228.41,89.50253,3545.59,\n                       41464.2,3031060,1409650),\n            `2055` = c(3.6447,37.9811,21394.3,\n                       624.45,289.635,9338.96,3538.03,443.747,0,1102.79,\n                       583.648,830.872,563.718,512582,30.91237,28.65034,61.00257,\n                       512494.3,2310.8,7146.7,6030.58,126402,2962.31,\n                       22144.6,22666.2,6927.98,833782,102760,84718,87289.3,\n                       85048,14070,459897,18139,7144.84,434613,34503.5,\n                       9407.739,31809.93,129537.17,46.07639,32830.09,7754.181,\n                       31642.62,156994.9,86.44108,6038.38,72552.9,3043250,\n                       1461730),\n            `2060` = c(6.23019,65.628,21436.6,\n                       805.351,387.872,9189.61,3607.32,452.666,0,1124.08,\n                       597.76,848.431,576.311,521203,35.29972,31.38661,63.33213,\n                       521114.5,2123.52,11141.2,9515.05,115458,2859.54,\n                       20759.8,21255.6,6366.51,800565,97113.1,80100.5,\n                       82597.4,80509.4,13288.5,446956,17643,6972.68,422340,\n                       31979.87,9800.887,30829.66,123788.46,42.85289,31481.56,\n                       8362.198,31657.3,154314.5,83.09827,7931.3,98142.2,\n                       3043200,1502840),\n            `2065` = c(9.50866,99.9575,21310.4,\n                       901.98,436.974,9130.49,3696.24,459.561,0,1140.37,\n                       607.416,860.808,585.153,528084,37.1182,32.51372,64.54791,\n                       527998.2,1952.15,15319.2,13053.2,103296,2727.71,\n                       19426.3,19891,5852.72,765524,91555,75522.4,77917.1,\n                       75966.2,12504.7,432058,17077.3,6762.77,408218,\n                       29807.03,9776.575,29815.95,117812.8,39.91257,30210.87,\n                       8581.064,31510.18,150584.19,79.67427,8931.97,111034,\n                       3045020,1540380),\n            `2070` = c(12.9184,135.629,21130.1,\n                       966.578,474.741,9128.98,3804.82,467.633,0,1158.88,\n                       619.112,873.495,594.153,534855,37.50921,32.91809,\n                       65.29468,534772.5,1789.8,18835.5,16026.8,92475.5,2586.44,\n                       18122.6,18551.3,5365.97,729534,86031.8,70978.8,\n                       73232.1,71413.3,11737.3,416140,16482.5,6529.16,393129,\n                       27949.11,9504.536,28818.64,111752.63,37.27523,\n                       29052.37,8551.468,31233.3,146152.92,76.35137,9529.77,\n                       119742,3050650,1578750),\n            `2075` = c(15.6197,165.125,20862.2,\n                       1013.01,513.803,9113.42,3906.33,474.32,0,1174.1,\n                       630.128,883.612,601.36,540258,37.80618,33.24832,65.84835,\n                       540176.7,1643.9,21033.9,18035.6,84140.7,2424.67,\n                       16903.8,17299.2,4928.55,693826,80758.8,66655.3,\n                       68752.3,67056.4,11015.2,399588,15855.2,6282.74,377450,\n                       26287.84,9123.119,27799.84,105707.98,34.89683,27946.46,\n                       8394.048,30847.08,141235.85,73.15781,9940.28,\n                       128079,3049890,1613310),\n            `2080` = c(17.0571,182.569,20600.2,1007,\n                       530.424,9268.74,4109.18,479.618,0,1186.73,639.705,\n                       895.505,610.19,545484,38.06203,33.56085,66.35847,\n                       545404.6,1510.17,21798.8,18951.7,78878.5,2253.07,\n                       15749.3,16125.5,4527.62,659039,75652.9,62471.1,\n                       64500.3,62935.7,10320.6,383158,15197.7,6045.7,361915,\n                       24659.71,8741.677,26805.47,99846.06,32.64357,26811.67,\n                       8224.951,30443.86,136278.69,70.02391,9788.65,129905,\n                       3057480,1660520),\n            `2085` = c(17.6801,191.994,20317.6,\n                       996.431,548.513,9464.88,4347.23,484.908,0,1199.22,\n                       649.722,908.181,619.757,550098,38.25366,33.82106,\n                       66.78983,550021.3,1390,21821.1,19279.7,75179,2071.79,\n                       14682.6,15043.1,4167.36,625667,70856.3,58542.8,60524.8,\n                       59088,9671.64,366983,14543.7,5810.77,346629,\n                       23069.68,8360.614,25813.77,94236.58,30.51336,25651.6,\n                       8042.666,30003.85,131352.25,66.95046,9572.85,131494,\n                       3064560,1711020),\n            `2090` = c(17.7501,195.664,20009.4,\n                       979.418,563.893,9690.85,4615.35,489.574,0,1210.21,\n                       659.021,920.572,629.272,553944,38.37135,34.01837,\n                       67.12546,553870.1,1283.26,21399.2,19225.8,72395.9,1881.68,\n                       13709.7,14057.5,3847.34,594107,66417.9,54906.9,\n                       56858.4,55541.9,9071.15,351311,13903.2,5582.38,331825,\n                       21534.21,7976.462,24846.54,88955.31,28.50956,\n                       24478.83,7853.662,29557.03,126531.1,63.94133,9289.44,\n                       132155,3070210,1763430),\n            `2095` = c(17.4626,193.302,19675.3,\n                       956.27,558.153,9907.22,4880.19,492.466,0,1217.35,\n                       663.994,930.164,636.762,557041,38.42535,34.14505,\n                       67.37501,556969.2,1188.85,20744.2,18724.6,70254.1,1685.15,\n                       12828.9,13165.1,3564.27,564528,62372.8,51572.4,\n                       53504.4,52292.7,8510.93,336275,13287.4,5362.83,317625,\n                       20071.46,7592.456,23938.17,84007.81,26.58988,\n                       23317.85,7648.025,29101.12,121860.41,60.93865,8974.24,\n                       129044,3074590,1813100)\n)\n\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.3     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors\n\n\nCode\ndata_longer<-data %>% \n  pivot_longer(-c(sector, subsector, technology), names_to=\"year\", values_to =\"value\") %>% \n  mutate(value = as.numeric(gsub(\",\", '', value)),\n         year = as.numeric(year)) %>% \n  drop_na()\n\n\nsector_unique<- unique(data_longer$sector)\n\nlibrary(scales)\n\n\n\nAttaching package: 'scales'\n\nThe following object is masked from 'package:purrr':\n\n    discard\n\nThe following object is masked from 'package:readr':\n\n    col_factor\n\n\nCode\nfor (i in sector_unique){\n  fig <- data_longer %>% filter(sector ==i) %>% \n    ggplot(aes(x = year, y = value, color  = technology))+\n    geom_line(size =1.5)+\n    scale_y_continuous(label = comma)+\n    theme_bw()+\n    facet_wrap(~subsector)+\n    labs(title =paste(\"Sector :\", sector_unique, \"(faceted by subsector)\"))\n  \n  plot(fig)\n}\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
+  },
+  {
+    "objectID": "gcam_transportation.html#meeting-with-prof.jeon",
+    "href": "gcam_transportation.html#meeting-with-prof.jeon",
+    "title": "GCAM-KAIST7",
+    "section": "2023-08-21 meeting with prof.Jeon",
+    "text": "2023-08-21 meeting with prof.Jeon\n\nGCAM7에는 trn_freight_road(트럭)에 hybrid 추가됨. Dawoon 파일에는 hybrid 없음\nCreated new xml configuration by adding lines\n\n\n\n\n\n\n\nNote\n\n\n\nfor <Configuration> <Value name = \"transport\">../input/gcamdata/xml/transportation_UCD_SSP1.xml</Value>\n\n\n\n\n\n\n\n\n분석기간을 2100년이 아닌 2050년까지만 보고싶은데;;; 오류남.\n\n\n\nfor stop year <Value name=\"stop-year\">2050</Value> -> DOESN’T WORK!!!\n\n\n\nSaved as configuration_transportation_SSP1.xml for backup\nAgain, saved it as configuration.xlm cause run-batct.cat in exe folder take configuration.xlm(not configuration_transporation_SSP1.xml) as input file\nrun model \nfor checking model results, go to Modelinterface folder, and click run-model-interface.bat and File - Open -DB Open\n\n\n\n\nmodel run result\n\n\n\nconfiguration.xml 파일에 vale name = solver 밑에 새로운 value name = transport 추가"
+  },
+  {
+    "objectID": "gcam_transportation.html#section",
+    "href": "gcam_transportation.html#section",
+    "title": "GCAM-KAIST7",
+    "section": "2023-08-22",
+    "text": "2023-08-22\n\ngit bash or tortoiseGit?\n\nInstead of using tortoiseGit, I hope to use git bash. Running tortoise git takes quite a long time when targeted .xml files are heavy. For using, CLI(Command line interface) needs to be learned. But, steep learning curve :(\n\n\n\ngit diff\nShow changes between commits, commit and working tree, etc\n\nTried to use git diff to see difference between versions in a file.\n\nmoved transportation_UCD_CORE.xml into a test folder\nmodified a speed in 2020 from 450 to 500 for make a difference. and then saved it.\n\n\n\n\nResult. We can find a difference without add or commit. just typing git diff gives the difference.\n\n\n4.Modified speed in 2030, 2035 and typed git diff again. Same as 2.\n\n\nCommit git commit and track my log using git log\n\n\n\nwhat’s next? reset? revert?\n\n\nDAC file"
+  },
+  {
+    "objectID": "gcam_transportation.html#section-1",
+    "href": "gcam_transportation.html#section-1",
+    "title": "GCAM-KAIST7",
+    "section": "23-08-23",
+    "text": "23-08-23"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "KAIST GCAM TEAM",
+    "section": "",
+    "text": "2 Global Change Assessment Model(GCAM)\n\n\n3 This webpage is made with Quarto.\n\n\n\n\n\nflowchart LR\n  A[qmd] --> B(Knitr)\n  A[qmd] --> C(Jupyter)\n  B(Knitr) --> D[md]\n  C(Jupyter) --> D[md]\n  D[md] --> E(pandoc)\n  E(pandoc) --> F(HTML)\n  E(pandoc) --> G(PDF)\n  E(pandoc) --> H(Word)\n  E(pandoc) --> I{and more}\n\n\n\n\n\nFigure 1: How Quarto orchestrates rendering of documents: start with a qmd file, use the Knitr or Jupyter engine to perform the computations and convert it to an md file, then use Pandoc to convert to various file formats including HTML, PDF, and Word."
+  },
+  {
+    "objectID": "intro_slide.html#디지털-글쓰기를-위한-페이지",
+    "href": "intro_slide.html#디지털-글쓰기를-위한-페이지",
+    "title": "Digital writing with Quarto",
+    "section": "디지털 글쓰기를 위한 페이지",
+    "text": "디지털 글쓰기를 위한 페이지\nThis presentation will show you examples of what you can do with Quarto and Reveal.js, including:\n\n\n신기한\nQuarto\nrevealjs\n…and much more"
+  },
+  {
+    "objectID": "intro_slide.html#pretty-code",
+    "href": "intro_slide.html#pretty-code",
+    "title": "Digital writing with Quarto",
+    "section": "Pretty Code",
+    "text": "Pretty Code\n\nOver 20 syntax highlighting themes available\nDefault theme optimized for accessibility\n\n\nLearn more: Syntax Highlighting"
+  },
+  {
+    "objectID": "intro_slide.html#code-animations",
+    "href": "intro_slide.html#code-animations",
+    "title": "Digital writing with Quarto",
+    "section": "Code Animations",
+    "text": "Code Animations\n\nOver 20 syntax highlighting themes available\nDefault theme optimized for accessibility\n\n\n\nhttps://quarto.org"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "quarto_slideshow.html#prerequisites",
+    "href": "quarto_slideshow.html#prerequisites",
+    "title": "Getting started with GCAM",
+    "section": "1. Prerequisites",
+    "text": "1. Prerequisites\n\nGithub: Sign up for github account and email me to give you access to GCAM-KAIST\nGit client: download a git client of your choice.\n\nTortoiseGit : old school client\nGithub desktop : standard github client\ngit for windows : command line based professional git client\n\nXML marker 1.1: make sure you get the older 1.1 version\nR"
+  },
+  {
+    "objectID": "quarto_slideshow.html#useful-instruction",
+    "href": "quarto_slideshow.html#useful-instruction",
+    "title": "Getting started with GCAM",
+    "section": "2. Useful Instruction",
+    "text": "2. Useful Instruction\n\nGCAM tutorial\nGit\nGCAM\ngcamdata\nUseful guide/PPT slides from gcam-training"
+  },
+  {
+    "objectID": "quarto_slideshow.html#running-gcam-release",
+    "href": "quarto_slideshow.html#running-gcam-release",
+    "title": "Getting started with GCAM",
+    "section": "3. Running GCAM release",
+    "text": "3. Running GCAM release\n\nGCAM\nDownload standard GCAM release\nSet up some prerequisite apps and run!"
+  },
+  {
+    "objectID": "quarto_slideshow.html#making-your-own-git-branch",
+    "href": "quarto_slideshow.html#making-your-own-git-branch",
+    "title": "Getting started with GCAM",
+    "section": "4. Making your own git branch",
+    "text": "4. Making your own git branch\n\n\n\n\n\n\nNote\n\n\nif anything on github is confusing, just ask chatGPT!\n\n\n\n\nGo to GCAM-KAIST.\nPick a branch to start from (currently: hcm/proj/kaist7update).\nCreate your own branch [you own this. No one else will make changes to your own branch].\ngit clone [this creates a full repo of GCAM-KAIST].\ngit checkout [your branch name] [this sets your branch on your own computer].\nTry making a small inconsequential change. Such as adding a small xml file in the input/policy folder.\ngit add [file you added].\ngit commit [this will commit all files you added/changed].\ngit push.\nConfirm that your commit has been correctly pushed to github.\n(if you are happy with your development, and would like it to be applied to ALL GCAM-KAIST users) create a pull request (PR) [back into the main GCAM-KAIST repo].\nAssign me (d3y419) as the reviewer. I’ll review the PR and merge as needed."
+  },
+  {
+    "objectID": "quarto_slideshow.html#download-the-required-versions",
+    "href": "quarto_slideshow.html#download-the-required-versions",
+    "title": "Getting started with GCAM",
+    "section": "1. Download the Required Versions",
+    "text": "1. Download the Required Versions\nGCAM 7.0 Official Release by JCRI: You can download this latest version from the following link.\nGCAM-KAIST 2.0: This is our specialized version at KAIST. Please download it using the link ."
+  },
+  {
+    "objectID": "quarto_slideshow.html#analyze-the-differences",
+    "href": "quarto_slideshow.html#analyze-the-differences",
+    "title": "Getting started with GCAM",
+    "section": "2. Analyze the Differences",
+    "text": "2. Analyze the Differences\nXML File Comparison: Please compare the XML files between the two versions as per your specific task in the google sheet. Document the Differences: Note any discrepancies, changes, or new features. This will help us understand what needs to be transferred or adapted."
+  },
+  {
+    "objectID": "quarto_slideshow.html#update-gcam-7.0-with-gcam-kaist-2.0-data",
+    "href": "quarto_slideshow.html#update-gcam-7.0-with-gcam-kaist-2.0-data",
+    "title": "Getting started with GCAM",
+    "section": "3. Update GCAM 7.0 with GCAM-KAIST 2.0 Data",
+    "text": "3. Update GCAM 7.0 with GCAM-KAIST 2.0 Data\nModify the Original GCAM 7.0 XML Files: Replace the necessary data with the corresponding data from GCAM-KAIST 2.0. Follow the Evolution Process: This is vital to complete the transformation from GCAM-KAIST 2.0 to GCAM-KAIST 7.0 by checking the “comparison with GCAM-KAIST2” column in google sheet. After running the scenario, you can check if the results are different from GCAM-KAIST2.0 or not."
+  },
+  {
+    "objectID": "quarto_slideshow.html#prepare-for-tomorrows-meeting",
+    "href": "quarto_slideshow.html#prepare-for-tomorrows-meeting",
+    "title": "Getting started with GCAM",
+    "section": "4. Prepare for Tomorrow’s Meeting",
+    "text": "4. Prepare for Tomorrow’s Meeting\nClarification of Differences: Be prepared to discuss the differences you’ve identified and how you’ve addressed them.\n\n\nhttps://quarto.org"
+  }
+]

@@ -1,0 +1,258 @@
+---
+title: "KIER기술정책플랫폼"
+date : last-modified # now
+author: 
+ - name: "안지석"
+   affiliation: "한국에너지기술연구원 정책연구실"
+title-block-banner: true
+format: 
+  html:
+    theme: flatly
+    code-fold: true
+    toc: true
+    toc-depth: 2
+    toc-title: 목차
+    number-section : true
+    highlight-style: github
+    self-contained: false
+---
+
+# 2023-08-17 첫회의
+
+::: callout-note
+## 참여자 {#참여자}
+
+KIER 기술정책플랫폼 업무 참여자 : 안지석, 최지영 이화랑
+:::
+
+## 추진 방향
+
+### Track.1 (외부업체 협업 필요)인포그래픽/인터랙티브
+
+기획 -\> 데이터 분석/시각화 -\> 스토리라인 구상 -\> 원고 작성 -\> 디자인 -\> 퍼블리싱
+
+-   외부 업체 지원 필수
+-   우수 레퍼런스 참고하여 아이디어 얻는 게 중요
+-   [Reuters graphics](https://www.reuters.com/graphics/)
+-   [SCMP](https://multimedia.scmp.com/culture/article/SCMP-printed-graphics-memory/)
+-   [NYT](https://www.nytimes.com/interactive/2021/12/05/business/economy/supply-chain.html?auth=login-google1tap&campaign_id=29&emc=edit_up_20211209&instance_id=47387&login=google1tap&nl=the-upshot&regi_id=136905000&segment_id=76536&te=1&user_id=0f183908c0e3f8d0f23ed9b81a5aaf71)
+-   [WORLD BANK](https://genderdata.worldbank.org/data-stories/flfp-data-story/)
+-   [K-에너지밸런스](https://www.kier.re.kr/tpp/energy/B/view/54?contentsName=k_valance_old&menuId=MENU00961)
+
+### Track2. (Made in KIER 100%)[Energy&Data](https://www.kier.re.kr/tpp/tppBoard/list?menuId=MENU00962)
+
+기획 -\> 데이터 분석/시각화 -\> 스토리라인 구상 -\> html로 원고 작성 -\> 관리자 모드를 통한 퍼블리싱
+
+-   정책연구실 자체적으로 제작 가능
+-   데이터 시각화, 텍스트 마이닝, 네트워크 분석 등 다양한 시도 가능
+-   데이터 시각화의 정수 [Economist - Graphic detail](https://www.economist.com/graphic-detail)
+
+## 참여 방법
+
+-   재밌고 자발적으로
+-   코딩을 배우거나 시도하고 싶다면 [Github을 통한 공유](https://coreanjs.github.io/jiseok_KIER/docs/blog/posts/2023-08-24-visualization/) 가능
+-   새로운 시도
+    -   R
+    -   Python
+    -   [Quarto](https://quarto.org/docs/authoring/markdown-basics.html), github 등
+    -   [Markdown](https://gist.github.com/ihoneymon/652be052a0727ad59601)
+-   데이터분석/시각화는 언제든 협조
+
+## 요청 사항(8-22까지)
+
+어떤 콘텐츠를 기획하고 제작할지 개인당 3개 이상씩 조사
+
+[자세하게 설명해주시면 감사하겠습니다.]{.aside}
+
+::: callout-tip
+## 예시
+
+2022년 국가연구개발사업 데이터 분석 및 인포그래픽 제작\
+방법:트리맵, 인터랙티브\
+자료 출처: KISTEP
+:::
+
+## 회의 후 데이터 분석 - 지역별 산업별 전력소비량 분석
+
+-   1990-2021 지역별, 산업별 전력소비량 데이터
+-   데이터 출처: KESIS, KEPCO
+
+```{r warning = FALSE, message = FALSE}
+library(tidyverse)
+library(readxl)
+
+
+KESIS_elec_consumption_raw<- read_excel("KESIS_지역별_산업분류별_전력소비량_extracted.xlsx") %>% 
+  pivot_longer( -c('region', 'type'), names_to="year", values_to="GWh") %>% 
+  mutate(GWh =round(GWh,1))
+
+KESIS_elec_consumption_raw
+
+# 산업분류 어떻게 구분되는지 확인해보면
+unique(KESIS_elec_consumption_raw$type)
+
+```
+
+```{r warning = FALSE, message = FALSE, out.wigth = "80%", fig.height = 12, fig.align = 'center'}
+
+max(KESIS_elec_consumption_raw$year) -> max_year
+
+
+KESIS_elec_consumption_2021<- KESIS_elec_consumption_raw %>% 
+  filter(year == 2021)
+
+##지표표기 옵션
+options("scipen" = 100)
+
+
+## 폰트
+library(showtext)
+library(extrafont)
+
+showtext_auto()
+
+font_add_google("Nanum Gothic", "nanumgothic")
+font_add_google("Poor Story", "poorstory")
+
+
+```
+
+```{r out.width="60%"}
+
+library(knitr)
+
+table_2021<-KESIS_elec_consumption_2021%>%
+  mutate(TWh=round(GWh/1000, 1)) %>% 
+  select(region, type, TWh) %>% 
+  pivot_wider(names_from ="type", values_from="TWh") %>% 
+  mutate(`합계` = rowSums(across(where(is.numeric)))) %>% 
+  select(region, 제조업, 서비스업, 가정용, 공공용, 농림어업, 광업, 합계) %>% 
+  arrange(desc(`합계`))
+
+  
+kable(table_2021)
+
+
+```
+
+```{r}
+KESIS_elec_consumption_2021 %>% 
+  group_by(type) %>% 
+  summarise(GWh = sum(GWh)) %>% 
+  arrange(desc(GWh)) %>% 
+  pull(type) ->type_level
+
+type_level
+
+```
+
+```{r out.width = "60%", fig.height = 6, fig.align ='center'}
+#| warning: false
+#| echo: false
+
+
+KESIS_elec_consumption_2021 %>% 
+  group_by(type) %>% 
+  summarise(TWh = sum(GWh)/1000) %>%
+ # mutate(color_label =ifelse(type =="제조업", "1", "2")) %>% 
+   mutate(color_label =case_when(type =="제조업" ~ "1",
+                                type =="서비스업" ~"2",
+                                TRUE ~ "3")) %>%
+  ggplot(aes(x = reorder(type, TWh), y = TWh, fill = color_label))+
+  geom_col()+
+  scale_fill_manual(values = c("#ea1117", "#1f5f97", '#b3b09e'))+
+  geom_text(aes(label = round(TWh, 1)),size=14, family= 'nanumgothic', hjust = -.2)+
+  scale_y_continuous(limits =c(0, 300))+
+  coord_flip()+
+
+  theme_bw()+
+  theme_minimal()+
+  theme(text = element_text(size =40, family= 'nanumgothic'),
+        plot.title =element_text(size = 50),
+        plot.title.position = "plot",
+        legend.position ="none")+
+  labs(y ="TWh",
+       x = "산업분류",
+       title = "2021년 대한민국 산업분류별 전력소비량")
+  
+
+```
+
+```{r out.width = "60%", fig.height = 8, fig.align = 'center'}
+#| warning: false
+#| echo: false
+
+KESIS_elec_consumption_2021 %>% 
+  group_by(region) %>% 
+  summarise(TWh = sum(GWh)/1000) %>%
+ # mutate(color_label =ifelse(type =="제조업", "1", "2")) %>% 
+  ggplot(aes(x = reorder(region, TWh), y = TWh))+
+  geom_col()+
+  geom_text(aes(label = round(TWh, 1)),size=14, family= 'nanumgothic', hjust = -.2)+
+  scale_y_continuous(limits =c(0, 300))+
+  coord_flip()+
+  theme_bw()+
+  theme_minimal()+
+  theme(text = element_text(size =40, family= 'nanumgothic'),
+        plot.title =element_text(size = 50),
+        plot.title.position = "plot",
+        legend.position ="none")+
+  labs(y ="TWh",
+       x = "지역",
+       title = "2021년 대한민국 지역별 전력소비량")
+  
+
+```
+
+```{r out.width = "100%", fig.height = 11, fig.align = 'center'}
+
+KESIS_elec_consumption_2021 %>% 
+  group_by(region) %>% 
+  summarise(GWh = sum(GWh)) %>% 
+  arrange(desc(GWh)) %>% 
+  pull(region) ->region_level
+
+region_level
+
+library(ggtext)  ## element_markdown
+
+KESIS_elec_consumption_2021 %>% 
+  group_by(region, type) %>% 
+  summarise(GWh = sum(GWh),
+            TWh = GWh/1000) %>% 
+  #mutate(color_label =ifelse(type =="제조업", "1", "2")) %>%
+  mutate(color_label =case_when(type =="제조업" ~ "1",
+                                type =="서비스업" ~"2",
+                                TRUE ~ "3")) %>%
+  ggplot(aes(x = fct_relevel(type, rev(type_level)), y = TWh, fill = color_label))+
+  geom_col()+
+  scale_y_continuous(limits =c(0, 80))+
+  scale_fill_manual(values = c("#ea1117", "#1f5f97", '#b3b09e'))+
+  coord_flip()+
+  theme_bw()+
+  theme_minimal()+
+  geom_text(aes(label = round(TWh, 1)),size = 5, family= 'nanumgothic', hjust = -.2)+
+  facet_wrap(~fct_relevel(region, region_level),ncol = 4)+
+  theme(text= element_text(size= 22, family= 'nanumgothic'),
+        plot.title = element_text(size = 30),
+         strip.text = element_textbox(
+      size = 22,
+      color = "white", fill = "#5D729D", box.color = "#4A618C",
+      halign = 0.5, linetype = 1, r = unit(5, "pt"), width = unit(1, "npc"),
+      padding = margin(2, 0, 1, 0), margin = margin(3, 3, 3, 3)),
+        plot.title.position = "plot",
+      legend.position ="none")+
+  labs(x = "",
+       y = "",
+       title ="2021년 대한민국 지역별 산업분류별 전력소비량",
+       subtitle ="",
+       caption = "Souce :KESIS, KEPCO, Graphic :Jiseok")
+
+
+```
+
+# 2023-08-22 두번째 회의
+
+## 요청 사항 취합
+
+[2023-08-17 회의 후 요청사항](#참여자) 정리

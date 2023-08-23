@@ -1,0 +1,7 @@
+[2,"\n"]
+[1,"Terminating existing preview server....DONE\n\nPreparing to preview\n[1/2] posts\\post-with-code\\index.qmd\n"]
+[1,"\r\n\r\nprocessing file: index.qmd\r\n1/3                  \r\n2/3 [unnamed-chunk-1]\r\n3/3                  \r\noutput file: index.knit.md\r\n\r\n"]
+[1,"[2/2] blog.qmd\n"]
+[1,"\nWatching files for changes\nBrowse at http://localhost:5630/posts/post-with-code/index.html\n"]
+[1,"GET: /documentation.html\n"]
+[1,"GET: /documentation.html\n"]
