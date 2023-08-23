@@ -18,7 +18,7 @@ This presentation will show you examples of what you can do with Quarto and [Rev
 
 
 ::: incremental
--   신기한
+-   신기한하하
 -   Quarto
 -   revealjs
 -   ...and much more
