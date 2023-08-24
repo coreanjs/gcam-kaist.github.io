@@ -65,12 +65,9 @@ format:
 -   output - queries
 -   ModelInterface - run-model-interface.bat
 
-![Model interface](./img/model_interface.png)
-### transportation
+![Model interface](./img/model_interface.png) \### transportation
 
 ![](./img/modelinterface_trn.png)
-
-
 
 ```{r}
 data<- data.frame(
@@ -335,11 +332,9 @@ for stop year `<Value name="stop-year">2050</Value>` -\> DOESN'T WORK!!!
 
 ![model run result](./img/model_interface_2.png)
 
-
-* configuration.xml 파일에 `vale name = solver` 밑에 새로운 `value name = transport` 추가
+-   configuration.xml 파일에 `vale name = solver` 밑에 새로운 `value name = transport` 추가
 
 ![](./img/value_name.png)
-
 
 ```{r}
 
@@ -347,52 +342,37 @@ for stop year `<Value name="stop-year">2050</Value>` -\> DOESN'T WORK!!!
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
 ## 2023-08-22
 
 ### git bash or tortoiseGit?
 
-* Instead of using `tortoiseGit`, I hope to use `git bash`. Running `tortoise git` takes quite a long time when targeted `.xml` files are heavy. For using, CLI(Command line interface) needs to be learned. But, steep learning curve :(
+-   Instead of using `tortoiseGit`, I hope to use `git bash`. Running `tortoise git` takes quite a long time when targeted `.xml` files are heavy. For using, CLI(Command line interface) needs to be learned. But, steep learning curve :(
 
 ### git diff
+
 Show changes between commits, commit and working tree, etc
 
-* Tried to use `git diff` to see difference between versions in a file.
-  1. moved `transportation_UCD_CORE.xml` into a test folder
-  
-  2. modified a  `speed` in 2020 from 450 to 500 for make a difference. and then saved it.
-  
-  
+-   Tried to use `git diff` to see difference between versions in a file.
+    1.  moved `transportation_UCD_CORE.xml` into a test folder
+
+    2.  modified a `speed` in 2020 from 450 to 500 for make a difference. and then saved it.
+
 ![](./img/diff_test.png)
 
-  3. Result.  We can find a difference without add or commit. just typing `git diff` gives the difference.
-  
-![](./img/diff_test_result.png)
-  
-  4.Modified `speed` in 2030, 2035 and typed `git diff` again. Same as 2.
-  
-![](./img/git_diff_result2.png)  
+3.  Result. We can find a difference without add or commit. just typing `git diff` gives the difference.
 
-  5. Commit `git commit` and track my log using `git log` 
-  
+![](./img/diff_test_result.png)
+
+4.Modified `speed` in 2030, 2035 and typed `git diff` again. Same as 2.
+
+![](./img/git_diff_result2.png)
+
+5.  Commit `git commit` and track my log using `git log`
 
 ![](./img/git_log.png)
 
-  6. what's next?   reset? revert?
-  
+6.  what's next? reset? revert?
 
-
-- DAC file
-
+-   DAC file
 
 ## 23-08-23
