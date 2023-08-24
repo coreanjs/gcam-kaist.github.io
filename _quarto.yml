@@ -23,7 +23,7 @@ website:
       - href: gcam_transportation.qmd
         text: GCAM-KAIST7
       - href: blog.qmd
-        text: Blog
+        text: Publications
         
     right:
       - icon: twitter
