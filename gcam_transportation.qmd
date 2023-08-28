@@ -146,11 +146,14 @@ Show changes between commits, commit and working tree, etc
 -   수송분야 transport.configuration_transportation_dawoon.xml
 
 
+## Representation of H2 in GCAM
+
+* Tried to make a flow chart of hydrogen in GCAM using `mermaid`
 
 :::{.column-page}
 ```{mermaid}
 flowchart TD
-  Electricity --> H2entralproduction
+  Electricity --> H2centralproduction
   Electricity --> H2wholesaledispensing
   Electricity --> H2industrial
   Wind --> H2centralproduction
