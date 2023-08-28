@@ -52,15 +52,15 @@
     "objectID": "gcam_transportation.html#section-1",
     "href": "gcam_transportation.html#section-1",
     "title": "GCAM-KAIST7",
-    "section": "23-08-23",
-    "text": "23-08-23"
+    "section": "2023-08-29",
+    "text": "2023-08-29\n\n수송분야 transport.configuration_transportation_dawoon.xml"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "KAIST GCAM TEAM",
+    "title": "IAM KAIST TEAM",
     "section": "",
-    "text": "2 Global Change Assessment Model(GCAM)\n\n\n3 This webpage is made with Quarto.\n\n\n\n\n\nflowchart LR\n  A[qmd] --> B(Knitr)\n  A[qmd] --> C(Jupyter)\n  B(Knitr) --> D[md]\n  C(Jupyter) --> D[md]\n  D[md] --> E(pandoc)\n  E(pandoc) --> F(HTML)\n  E(pandoc) --> G(PDF)\n  E(pandoc) --> H(Word)\n  E(pandoc) --> I{and more}\n\n\n\n\n\nFigure 1: How Quarto orchestrates rendering of documents: start with a qmd file, use the Knitr or Jupyter engine to perform the computations and convert it to an md file, then use Pandoc to convert to various file formats including HTML, PDF, and Word."
+    "text": "2 Global Change Assessment Model(GCAM)\nGCAM is a market equilibrium model with a global scope and operates from 1990 to 2100 in five-year time steps. It can be used to examine, for example, how changes in population, income, or technology cost might alter crop production, energy demand, and water withdrawals, or how changes in one region’s demand for energy affect energy, water, and land in other regions.\nGCAM has been developed at Pacific Northwest National Laboratory for over 30 years and is now a freely available community model and documented online. The team at JGCRI is comprised of economists, engineers, energy experts, forest ecologists, agricultural scientists, and climate system scientists who develop the model and apply it to a range of science and policy questions. The team works closely with Earth system and ecosystem modelers to integrate the human decision components of GCAM into their analyses.\nSource : PNNL\n\n\n3 This webpage is made with Quarto.\n\n\n\n\n\nflowchart LR\n  A[qmd] --> B(Knitr)\n  A[qmd] --> C(Jupyter)\n  B(Knitr) --> D[md]\n  C(Jupyter) --> D[md]\n  D[md] --> E(pandoc)\n  E(pandoc) --> F(HTML)\n  E(pandoc) --> G(PDF)\n  E(pandoc) --> H(Word)\n  E(pandoc) --> I{and more}\n\n\n\n\n\nFigure 1: How Quarto orchestrates rendering of documents: start with a qmd file, use the Knitr or Jupyter engine to perform the computations and convert it to an md file, then use Pandoc to convert to various file formats including HTML, PDF, and Word."
   },
   {
     "objectID": "intro_slide.html#디지털-글쓰기를-위한-페이지",
