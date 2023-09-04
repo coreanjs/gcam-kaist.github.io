@@ -1,5 +1,5 @@
 ---
-title: "IAM KAIST TEAM"
+title: "KAIST IAM Group"
 description: "IAM KAIST"
 date: today # 날짜 설정: now, last-modified
 author:

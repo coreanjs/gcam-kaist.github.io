@@ -1,12 +1,12 @@
 project:
-  title: "test"
+  title: "KAIST IAM Group"
   type: website  ### 이거 빠지면 안됌
   output-dir: docs
   
   
   
 website:
-  title: "IAM Powerhouse @ KAIST"
+  title: "KAIST IAM Group"
   favicon: "./img/analysis.png"
   open-graph: true
   twitter-card: true

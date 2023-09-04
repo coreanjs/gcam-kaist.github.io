@@ -71,8 +71,6 @@ execute:
 
 ![](./img/modelinterface_trn.png)
 
-
-
 ## 2023-08-21 meeting with prof.Jeon
 
 -   GCAM7에는 trn_freight_road(트럭)에 hybrid 추가됨. Dawoon 파일에는 hybrid 없음
@@ -145,12 +143,11 @@ Show changes between commits, commit and working tree, etc
 
 -   수송분야 transport.configuration_transportation_dawoon.xml
 
-
 ## Representation of H2 in GCAM
 
-* Tried to make a flow chart of hydrogen in GCAM using `mermaid`
+-   Tried to make a flow chart of hydrogen in GCAM using `mermaid`
 
-:::{.column-page}
+::: column-page
 ```{mermaid}
 flowchart TD
   Electricity --> H2centralproduction
