@@ -32,16 +32,6 @@ website:
       - icon: github
         href: https://github.com/GCAM-KAIST
         aria-label: GitHub
-  
-  sidebar:
-    style: docked
-    contents: 
-      - section: "PPT"
-        contents:
-          - href: intro_slide.qmd
-            text: "소개"
-          - href: quarto_slideshow.qmd
-            text: "Quarto 슬라이드"
       
   
   
