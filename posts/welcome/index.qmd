@@ -11,11 +11,13 @@ Under the 2015 Paris Agreement, countries are mandated to submit Nationally Dete
 
 In a new commentary in One Earth, the international group of researchers from Korea, China, and the U.S. take stock of the current NDCs and assess the need to increase near-term decarbonization ambition to limit global warming to 1.5°C.
 
-![](image.png)
-
 KAIST Graduate School of Green Growth & Sustainability visiting professor Haewon McJeon stated that "while the NDCs submitted at COP26 in November 2021 collectively steered us toward limiting global temperature rise to under 2°C by the century's end but fell short of the ambitious 1.5°C goal."
 
 COP28's central focus is on the Global Stocktake (GST), designed to assess countries' progress toward their NDCs and the Agreement's long-term objectives. While evaluating progress remains key, the GST also aims to pinpoint priority areas for enhanced ambition to align with the Paris Agreement's long-term goal of keeping global temperature increase below 1.5°C. Three critical policy areas stand out: non-CO2 gases, carbon dioxide removal (CDR), and deforestation. Decision-makers are urged to concentrate their efforts in these areas during COP28 and the GST to better align countries' commitments with the Paris Agreement's long-term climate objectives.
+
+![](image2.png)
+
+![](image.png)
 
 The initial NDCs submitted after the 2015 Paris Agreement fell short of the 2°C target, with a high risk of exceeding 3°C. COP26 showcased the Agreement's ratcheting mechanism, resulting in updated NDCs and ambitious decarbonization pledges. If countries maintain a 2% decarbonization rate beyond 2030, there's a \>50% chance of limiting end-of-century warming to \<2°C, rising to nearly 70% with a 5% rate. However, achieving the aspirational 1.5°C goal remains unlikely, necessitating further ambition. Even with enhanced ambition, global temperatures may temporarily exceed 1.5°C this century, making near-term collective ambition vital to limit temperature overshooting and incentivize R&D in technologies like carbon dioxide removal, accelerate fossil fuel phase-out, and engage the private sector for cost-effective long-term GHG reductions.
 
