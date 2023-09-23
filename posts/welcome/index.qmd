@@ -4,13 +4,14 @@ author: "KAIST IAM Group"
 date: last-modified
 categories: [news]
 fig-align: center
+image: "image.png"
 ---
-
-![](image.png)
 
 Under the 2015 Paris Agreement, countries are mandated to submit Nationally Determined Contributions (NDCs) outlining their climate goals and actions for reducing greenhouse gas emissions by 2025 or 2030.
 
 In a new commentary in One Earth, the international group of researchers from Korea, China, and the U.S. take stock of the current NDCs and assess the need to increase near-term decarbonization ambition to limit global warming to 1.5°C.
+
+![](image.png)
 
 KAIST Graduate School of Green Growth & Sustainability visiting professor Haewon McJeon stated that "while the NDCs submitted at COP26 in November 2021 collectively steered us toward limiting global temperature rise to under 2°C by the century's end but fell short of the ambitious 1.5°C goal."
 
